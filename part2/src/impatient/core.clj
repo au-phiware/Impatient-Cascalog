@@ -2,7 +2,7 @@
   (:use [cascalog.api]
         [cascalog.more-taps :only (hfs-delimited)])
   (:require [clojure.string :as s]
-            [cascalog.ops :as c])
+            [cascalog.logic.ops :as c])
   (:gen-class))
 
 (defmapcatop split [line]
