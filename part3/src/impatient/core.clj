@@ -12,7 +12,7 @@
 
 (defn scrub-text [s]
   "trim open whitespaces and lower case"
-  ((c/comp s/trim s/lower-case) s))
+  ((comp s/trim s/lower-case) s))
 
 (defn -main [in out & args]
   (?<- (hfs-delimited out)
