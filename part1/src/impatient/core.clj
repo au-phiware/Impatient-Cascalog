@@ -6,4 +6,4 @@
 (defn -main [in out & args]
   (?<- (hfs-delimited out)
        [?doc ?line]
-       ((hfs-delimited in :skip-header? true) ?doc ?line)))
+       ((hfs-delimited in :skip-header? false) ?doc ?line)))
