@@ -2,16 +2,17 @@
   (:use [cascalog.api]
         [cascalog.more-taps :only (hfs-delimited)])
   (:require [clojure.string :as s]
-            [cascalog.ops :as c])
+             [cascalog.logic.def :as d]
+            [cascalog.logic.ops :as c])
   (:gen-class))
 
-(defmapcatop split [line]
+(d/defmapcapfn split [line]
   "reads in a line of string and splits it by regex"
   (s/split line #"[\[\]\\\(\),.)\s]+"))
 
 (defn scrub-text [s]
   "trim open whitespaces and lower case"
-  ((comp s/trim s/lower-case) s))
+  ((c/comp s/trim s/lower-case) s))
 
 (defn -main [in out & args]
   (?<- (hfs-delimited out)
